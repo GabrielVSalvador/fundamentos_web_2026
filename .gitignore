@@ -1,0 +1,16 @@
+# Arquivos do Sistema Operacional (Linux/Mac)
+.DS_Store
+Thumbs.db
+
+# Configurações do VS Code
+.vscode/
+*.code-workspace
+
+# Arquivos temporários e logs
+*.log
+node_modules/
+.env
+
+# Pasta de build/dist (se você usar algum framework no futuro)
+dist/
+build/
