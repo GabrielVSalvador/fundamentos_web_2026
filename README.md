@@ -9,6 +9,11 @@ Uma página estruturada em HTML5 e estilizada com CSS3.
 * **Status:** Concluído ✅
 * **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/projeto1/index.html)
 
+### 📂 Projeto 2
+Uma página estruturada em HTML5 e estilizada com CSS3.
+* **Status:** Em desenvolvimento 🚧
+* **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/projeto2/index.html)
+
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
