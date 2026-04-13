@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: rgba(0, 36, 52);
+    width: 900px;
+    margin: 0 auto;
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    padding: 20px 0;
+}
+
+.menu a{
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.logo span{
+    font-weight: bold;
+    color: rgba(0, 168, 232);
+}
+
+.hero {
+    background-image: url("/img/surf.png");
+    background-size: cover;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    color: white;
+}
+
+.hero h1 { font-size: 50px;}
+
+.cards-section {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: rgba(0, 118, 170);
+    color: white;
+    padding: 20px;
+    flex: 1;
+}
+
+.card button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(39, 192, 240);
+    color: white;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    padding: 40px 20px;
+    gap: 40px;
+}
+
+.world-info, .testimonial { flex: 1; }
+
+.content {
+    display: flex; 
+    gap: 15px; 
+    margin-top: 10px; 
+}
+
+.box {
+    background-color: rgba(213, 240, 255);
+    padding: 20px;
+    font-style: italic;
+}
+
+.menu-below {
+    background-color: rgba(213, 240, 255);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
