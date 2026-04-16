@@ -37,7 +37,7 @@ main {
 }
 
 .hero {
-    background-image: url("/img/surf.png");
+    background-image: url("../img/surf.png");
     background-size: cover;
     height: 350px;
     display: flex;
