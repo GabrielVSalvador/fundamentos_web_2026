@@ -139,6 +139,10 @@ header nav{
     width: 250px;
 }
 
+.text-content  a {
+    color: rgba(0, 168, 232);
+}
+
 .testimonial {
     display: flex;
     flex-direction: column;
