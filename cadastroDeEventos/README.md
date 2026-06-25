@@ -1,7 +1,7 @@
 # Sistema de Cadastro de Eventos
 
 ## Descrição
-Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a cadastrar eventos.
+Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a gerenciar eventos.
 
 ## Funcionalidades
  Cadastrar evento
@@ -10,6 +10,7 @@ Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a cada
  Calcular valor total arrecadado possível
  Verificar observações indefinidas
  Verificar eventos cancelados
+ exclusão de eventos
 
 ## Tecnologias utilizadas
 html, css e javascript

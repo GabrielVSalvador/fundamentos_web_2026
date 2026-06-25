@@ -10,6 +10,11 @@ let campoPreco = document.getElementById("preco");
 let campoData = document.getElementById("data");
 let campoAtivo = document.getElementById("ativo");
 
+// Carrega os eventos do armazenamento local ao iniciar a página
+carregarDoLocalStorage();
+listarEventos();
+calcularEstatisticas();
+
 // Adiciona um evento de clique ao botão "Cadastrar"
 botaoCadastrar.addEventListener("click", function() {
     // Valida os campos do formulário antes de criar o objeto evento
@@ -62,6 +67,8 @@ botaoCadastrar.addEventListener("click", function() {
     campoPreco.value = "";
     campoData.value = "";
     campoAtivo.checked = false;
+
+    salvarNoLocalStorage();
 });
 
 // Função que exibe a lista de eventos na tela
@@ -75,6 +82,7 @@ function listarEventos() {
         divLista.innerHTML += `
             <div class="item">
                 <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'}</span>
+                <button onclick="excluirEvento(${index})">Excluir</button>
             </div>
         `;
     });
@@ -102,4 +110,28 @@ function calcularEstatisticas() {
         ${evento.observacao == undefined ? `<p>Evento ${evento.titulo} sem observação</p>` : ''}
         ${evento.cancelamento !== null ? `<p> Evento cancelado.</p><p>Motivo: ${evento.cancelamento} </p>` : ''}
     `;})
+}
+
+// Função que exclui um evento do array de eventos com base no índice fornecido usando o método splice, e atualiza a lista de eventos e as estatísticas exibidas na tela
+function excluirEvento(index) {
+    eventos.splice(index, 1);
+    salvarNoLocalStorage();
+    listarEventos();
+    calcularEstatisticas();
+}
+
+// Função que salva o array de eventos no armazenamento local usando o método setItem do localStorage, convertendo o array em uma string JSON com o método JSON.stringify
+function salvarNoLocalStorage() {
+    localStorage.setItem("eventos", JSON.stringify(eventos));
+}
+
+// Função que carrega o array de eventos do armazenamento local usando o método getItem do localStorage, convertendo a string JSON de volta em um array com o método JSON.parse
+function carregarDoLocalStorage() {
+    let eventosSalvos = localStorage.getItem("eventos");
+    if (eventosSalvos) {
+        eventos = JSON.parse(eventosSalvos).map(function(evento) {
+        evento.data = new Date(evento.data);
+        return evento;
+        });
+    }
 }
