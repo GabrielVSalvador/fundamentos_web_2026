@@ -20,8 +20,17 @@ html, css e javascript
 Abrir o arquivo index.html no navegador.
 
 ## Conceitos de JavaScript praticados
-- Adicionar despesas com descrição e valor
-- Listar todas as despesas cadastradas
-- Calcular total, média, maior e menor gasto
-- Exibir porcentagem de cada despesa em relação ao total
-- Validar campos antes de salvar
+Arrays, objetos e .push()
+Seletores do DOM e eventos
+Validação de dados com isNaN()
+parseFloat() para conversão de tipos
+forEach, map, filter, reduce
+Math.max, Math.min e spread ...
+Template strings e innerHTML
+splice() para remover itens
+localStorage para persistir dados
+JSON.stringify e JSON.parse
+sort() para ordenação
+Operador ternário
+Escopo de variáveis
+Biblioteca externa com Chart.js
