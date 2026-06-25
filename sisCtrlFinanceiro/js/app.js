@@ -1,9 +1,16 @@
 // Array que guarda todas as despesas do usuário
 let despesas = [];
+
 // Variaveis que guardam os elementos do DOM
 let botaoAdicionar = document.getElementById("btnAdicionar");
 let campoDescricao = document.getElementById("descricao");
 let campoValor = document.getElementById("valor");
+
+// Carrega as despesas do armazenamento local ao iniciar a página
+carregarDoLocalStorage();
+exibirDespesas();
+calcularEstatisticas();
+
 // Adiciona um evento de clique ao botão "Adicionar"
 botaoAdicionar.addEventListener("click", function() {
     // Pega os valores dos campos de descrição e valor
@@ -33,6 +40,8 @@ botaoAdicionar.addEventListener("click", function() {
     // Limpa os campos após adicionar a despesa
     campoDescricao.value = "";
     campoValor.value = "";
+    // Salva as despesas no armazenamento local
+    salvarNoLocalStorage();
 });
 // Função que exibe a lista de despesas na tela
 function exibirDespesas() {
@@ -94,9 +103,23 @@ function calcularEstatisticas() {
     <h3>Porcentagem por despesa:</h3>
     <div><p>${porcentagens.join("<br>")}</p></div>`;
 }
+
 // Função que remove uma despesa do array de despesas pelo índice utilizando o método splice, e atualiza a lista e as estatísticas
 function removerDespesa(indice) {
     despesas.splice(indice, 1);
+    salvarNoLocalStorage();
     exibirDespesas();
     calcularEstatisticas();
+}
+
+// Função que salva o array de despesas no armazenamento local usando JSON.stringify
+function salvarNoLocalStorage() {
+    localStorage.setItem("despesas", JSON.stringify(despesas));
+}
+// Função que carrega o array de despesas do armazenamento local usando JSON.parse
+function carregarDoLocalStorage() {
+    let dados = localStorage.getItem("despesas");
+    if (dados !== null) {
+        despesas = JSON.parse(dados);
+    }
 }
