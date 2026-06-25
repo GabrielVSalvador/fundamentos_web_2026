@@ -11,13 +11,25 @@ Uma página estruturada em HTML5 e estilizada com CSS3.
 
 ### 📂 Projeto 2
 Uma página estruturada em HTML5 e estilizada com CSS3.
-* **Status:** Em desenvolvimento 🚧
+* **Status:** Concluído ✅
 * **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/projeto2/index.html)
+
+### 📂 Projeto 3
+Uma página estruturada em HTML5 e estilizada com CSS3.
+* **Status:** Concluído ✅
+* **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/projeto3/index.html)
+
+### 📂 Controle Financeiro
+Um sistema de controle financeiro pessoal desenvolvido em JavaScript,
+com funcionalidades de registro de despesas, estatísticas automáticas,
+gráficos e persistência de dados com localStorage.
+* **Status:** Concluído ✅
+* **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/sisCtrlFinanceiro/index.html)
 
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
-* **Linguagens:** HTML5, CSS3
+* **Linguagens:** HTML5, CSS3 e JavaScript
 * **Ambiente:** Linux (Lubuntu)
 * **Editor:** VS Code
 * **Versionamento:** Git & GitHub
