@@ -4,7 +4,7 @@
 Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a controlar gastos pessoais
 
 ## Funcionalidades
-Registrar gastos e gerar estatísticas automáticas.
+Registrar gastos, gerar estatísticas automáticas e remover gastos.
 
 ## Tecnologias utilizadas
 html, css e javascript

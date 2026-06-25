@@ -40,9 +40,14 @@ function exibirDespesas() {
     let divLista = document.getElementById("lista");
     divLista.innerHTML = "<h2>Despesas</h2>";
     // Itera sobre o array de despesas e adiciona cada despesa à div
-    despesas.forEach(function(despesa) {
-        divLista.innerHTML += `<p>${despesa.descricao} - R$ ${despesa.valor}</p>`;
-    });
+    despesas.forEach(function(despesa, indice) {
+    divLista.innerHTML += `
+        <div class="item">
+            <span>${despesa.descricao} - R$ ${despesa.valor}</span>
+            <button onclick="removerDespesa(${indice})">Remover</button>
+        </div>
+    `;
+});
 }
 // Função que calcula e exibe as estatísticas das despesas
 function calcularEstatisticas() {
@@ -88,4 +93,10 @@ function calcularEstatisticas() {
     <p>Gastos acima de R$100: ${gastosAcima100.length}</p>
     <h3>Porcentagem por despesa:</h3>
     <div><p>${porcentagens.join("<br>")}</p></div>`;
+}
+// Função que remove uma despesa do array de despesas pelo índice utilizando o método splice, e atualiza a lista e as estatísticas
+function removerDespesa(indice) {
+    despesas.splice(indice, 1);
+    exibirDespesas();
+    calcularEstatisticas();
 }
