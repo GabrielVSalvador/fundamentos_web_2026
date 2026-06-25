@@ -9,6 +9,8 @@ let campoVagas = document.getElementById("vagas");
 let campoPreco = document.getElementById("preco");
 let campoData = document.getElementById("data");
 let campoAtivo = document.getElementById("ativo");
+let campoBusca = document.getElementById("busca");
+let botaoBuscar = document.getElementById("btnBuscar");
 
 // Carrega os eventos do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
@@ -83,6 +85,7 @@ function listarEventos() {
             <div class="item">
                 <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'}</span>
                 <button onclick="excluirEvento(${index})">Excluir</button>
+                <button onclick="cancelarEvento(${index})">Cancelar</button>
             </div>
         `;
     });
@@ -135,3 +138,41 @@ function carregarDoLocalStorage() {
         });
     }
 }
+
+// Função que cancela um evento, solicitando ao usuário o motivo do cancelamento e atualizando o objeto do evento com a informação fornecida, além de marcar o evento como inativo
+function cancelarEvento(index) {
+    // Solicita ao usuário o motivo do cancelamento do evento usando o método prompt
+    let motivo = prompt("Digite o motivo do cancelamento do evento:");
+    // Se o usuário fornecer um motivo, atualiza o objeto do evento com a informação e marca o evento como inativo, além de salvar as alterações no armazenamento local e atualizar a lista de eventos e as estatísticas exibidas na tela
+    if (motivo) {
+        eventos[index].cancelamento = motivo;
+        eventos[index].ativo = false;
+        salvarNoLocalStorage();
+        listarEventos();
+        calcularEstatisticas();
+    }
+}
+
+// Adiciona um evento de clique ao botão "Buscar"
+botaoBuscar.addEventListener("click", function() {
+    let termoBusca = campoBusca.value.toLowerCase();
+    let eventosFiltrados = eventos.filter(function(evento) {
+        return evento.titulo.toLowerCase().includes(termoBusca);
+    });
+    // Atualiza a lista de eventos exibida na tela com os eventos filtrados
+    let divLista = document.getElementById("listaEventos");
+    divLista.innerHTML = "<h2>Eventos Cadastrados</h2>";
+    if (eventosFiltrados.length === 0) {
+        divLista.innerHTML += "<p>Nenhum evento encontrado.</p>";
+        return;
+    }
+    eventosFiltrados.forEach(function(evento, index) {
+        divLista.innerHTML += `
+            <div class="item">
+                <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'}</span>
+                <button onclick="excluirEvento(${index})">Excluir</button>
+                <button onclick="cancelarEvento(${index})">Cancelar</button>
+            </div>
+        `;
+    });
+});

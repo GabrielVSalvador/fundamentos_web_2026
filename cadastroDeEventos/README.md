@@ -11,6 +11,7 @@ Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a gere
  Verificar observações indefinidas
  Verificar eventos cancelados
  exclusão de eventos
+ busca de eventos por nome
 
 ## Tecnologias utilizadas
 html, css e javascript
