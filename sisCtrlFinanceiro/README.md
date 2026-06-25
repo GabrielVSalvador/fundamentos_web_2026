@@ -11,6 +11,7 @@ Salvar despesas no localStorage;
 Ordenação por maior gasto;
 Cálculo de orçamento restante;
 Adiciona categorias nas despesas;
+Gráfico das despesas;
 
 ## Tecnologias utilizadas
 html, css e javascript

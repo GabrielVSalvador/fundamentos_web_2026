@@ -8,6 +8,7 @@ let campoValor = document.getElementById("valor");
 let botaoOrdenar = document.getElementById("btnOrdenar");
 let campoOrcamento = document.getElementById("orcamento");
 let campoCategoria = document.getElementById("categoria");
+let grafico = null;
 
 // Carrega as despesas do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
@@ -73,6 +74,7 @@ function exibirDespesas() {
         </div>
     `;
 });
+exibirGrafico();
 }
 
 // Função que calcula e exibe as estatísticas das despesas
@@ -151,4 +153,32 @@ function carregarDoLocalStorage() {
     if (dados !== null) {
         despesas = JSON.parse(dados);
     }
+}
+
+function exibirGrafico() {
+    let canvas = document.getElementById("grafico");
+    let ctx = canvas.getContext("2d");
+
+    let labels = despesas.map(function(despesa) {
+        return despesa.descricao;
+    });
+
+    let valores = despesas.map(function(despesa) {
+        return despesa.valor;
+    });
+
+    if (grafico !== null) {
+        grafico.destroy();
+    }
+
+    grafico = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Valor (R$)",
+                data: valores
+            }]
+        }
+    });
 }
