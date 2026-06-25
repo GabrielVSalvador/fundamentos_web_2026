@@ -11,6 +11,7 @@ let campoData = document.getElementById("data");
 let campoAtivo = document.getElementById("ativo");
 let campoBusca = document.getElementById("busca");
 let botaoBuscar = document.getElementById("btnBuscar");
+let botaoOrdenar = document.getElementById("ordenar");
 
 // Carrega os eventos do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
@@ -175,4 +176,15 @@ botaoBuscar.addEventListener("click", function() {
             </div>
         `;
     });
+});
+
+// Adiciona um evento de clique ao botão "Ordenar"
+botaoOrdenar.addEventListener("click", function() {
+    // Ordena o array de eventos em ordem decrescente pela data usando o método sort
+    eventos.sort(function(a, b){
+        return a.data - b.data;
+    });
+    salvarNoLocalStorage();
+    // Atualiza a lista de eventos exibida na tela após ordenar
+    listarEventos();
 });

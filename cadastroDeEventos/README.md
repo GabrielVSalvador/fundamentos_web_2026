@@ -12,6 +12,7 @@ Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a gere
  Verificar eventos cancelados
  exclusão de eventos
  busca de eventos por nome
+ ordenação por data
 
 ## Tecnologias utilizadas
 html, css e javascript
