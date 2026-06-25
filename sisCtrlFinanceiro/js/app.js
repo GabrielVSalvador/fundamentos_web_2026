@@ -7,6 +7,7 @@ let campoDescricao = document.getElementById("descricao");
 let campoValor = document.getElementById("valor");
 let botaoOrdenar = document.getElementById("btnOrdenar");
 let campoOrcamento = document.getElementById("orcamento");
+let campoCategoria = document.getElementById("categoria");
 
 // Carrega as despesas do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
@@ -39,10 +40,11 @@ botaoAdicionar.addEventListener("click", function() {
         alert("Digite um valor válido!");
         return;
     }
-    // Cria um objeto de despesa com a descrição e o valor
+    // Cria um objeto de despesa com a descrição, o valor e a categoria selecionada
     let novaDespesa = {
         descricao: descricao,
-        valor: valor
+        valor: valor,
+        categoria: campoCategoria.value
     };
     // Adiciona a nova despesa ao array de despesas
     despesas.push(novaDespesa);
@@ -66,7 +68,7 @@ function exibirDespesas() {
     despesas.forEach(function(despesa, indice) {
     divLista.innerHTML += `
         <div class="item">
-            <span>${despesa.descricao} - R$ ${despesa.valor}</span>
+            <span>${despesa.descricao} - R$ ${despesa.valor} ${(despesa.categoria=="") ? '' : '- ' + despesa.categoria }</span>
             <button onclick="removerDespesa(${indice})">Remover</button>
         </div>
     `;
