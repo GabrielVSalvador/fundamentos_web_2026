@@ -5,12 +5,23 @@ let despesas = [];
 let botaoAdicionar = document.getElementById("btnAdicionar");
 let campoDescricao = document.getElementById("descricao");
 let campoValor = document.getElementById("valor");
+let botaoOrdenar = document.getElementById("btnOrdenar");
 
 // Carrega as despesas do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
 exibirDespesas();
 calcularEstatisticas();
 
+// Adiciona um evento de clique ao botão "Ordenar"
+botaoOrdenar.addEventListener("click", function() {
+    // Ordena o array de despesas em ordem decrescente pelo valor usando o método sort
+    despesas.sort(function(a, b) {
+        return b.valor - a.valor;
+    });
+    salvarNoLocalStorage();
+    // Atualiza a lista de despesas exibida na tela após ordenar
+    exibirDespesas();
+});
 // Adiciona um evento de clique ao botão "Adicionar"
 botaoAdicionar.addEventListener("click", function() {
     // Pega os valores dos campos de descrição e valor
