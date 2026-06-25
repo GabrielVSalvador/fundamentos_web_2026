@@ -8,6 +8,8 @@ Registrar gastos;
 gerar estatísticas automáticas;
 Remover gastos;
 Salvar despesas no localStorage;
+Ordenação por maior gasto
+cálculo de orçamento restante
 
 ## Tecnologias utilizadas
 html, css e javascript

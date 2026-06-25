@@ -6,6 +6,7 @@ let botaoAdicionar = document.getElementById("btnAdicionar");
 let campoDescricao = document.getElementById("descricao");
 let campoValor = document.getElementById("valor");
 let botaoOrdenar = document.getElementById("btnOrdenar");
+let campoOrcamento = document.getElementById("orcamento");
 
 // Carrega as despesas do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
@@ -22,6 +23,7 @@ botaoOrdenar.addEventListener("click", function() {
     // Atualiza a lista de despesas exibida na tela após ordenar
     exibirDespesas();
 });
+
 // Adiciona um evento de clique ao botão "Adicionar"
 botaoAdicionar.addEventListener("click", function() {
     // Pega os valores dos campos de descrição e valor
@@ -54,6 +56,7 @@ botaoAdicionar.addEventListener("click", function() {
     // Salva as despesas no armazenamento local
     salvarNoLocalStorage();
 });
+
 // Função que exibe a lista de despesas na tela
 function exibirDespesas() {
     // Pega o elemento da div que vai exibir a lista de despesas
@@ -69,6 +72,7 @@ function exibirDespesas() {
     `;
 });
 }
+
 // Função que calcula e exibe as estatísticas das despesas
 function calcularEstatisticas() {
     // Pega o elemento da div que vai exibir as estatísticas
@@ -113,7 +117,19 @@ function calcularEstatisticas() {
     <p>Gastos acima de R$100: ${gastosAcima100.length}</p>
     <h3>Porcentagem por despesa:</h3>
     <div><p>${porcentagens.join("<br>")}</p></div>`;
+
+    // Calcula o orçamento restante subtraindo o total das despesas do valor do orçamento
+    let orcamentoRestante = 0;
+    let orcamento = parseFloat(campoOrcamento.value);
+    if (!isNaN(orcamento) && orcamento > 0) {
+        orcamentoRestante = orcamento - total;
+        divEstatisticas.innerHTML += `<p>Orçamento restante: R$ ${orcamentoRestante.toFixed(2)}</p>`;
+    }
 }
+
+campoOrcamento.addEventListener("change", function() {
+    calcularEstatisticas();
+});
 
 // Função que remove uma despesa do array de despesas pelo índice utilizando o método splice, e atualiza a lista e as estatísticas
 function removerDespesa(indice) {
