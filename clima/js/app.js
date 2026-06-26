@@ -6,7 +6,12 @@ let campoCidade = document.getElementById("cidade");
 let botaoPesquisar = document.getElementById("btnPesquisar");
 let mensagem = document.getElementById("mensagem");
 
+// Variável que guarda o gráfico
+let grafico = null;
+// Carrega o histórico do armazenamento local ao iniciar a página
+carregarDoLocalStorage();
 
+// Adiciona um evento de clique ao botão "Pesquisar"
 botaoPesquisar.addEventListener("click", async function() {
     let cidade = campoCidade.value.trim();
     if (cidade === "") {
@@ -18,9 +23,10 @@ botaoPesquisar.addEventListener("click", async function() {
     salvarHistorico(data);
     exibirHistorico();
     exibirEstatisticas();
+    exibirGrafico();
 });
 
-
+// Função para buscar o clima de uma cidade usando a API do OpenWeatherMap
 async function buscarClima(cidade) {
     try {
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${API_KEY}&units=metric&lang=pt_br`;
@@ -36,6 +42,7 @@ async function buscarClima(cidade) {
     }
 }
 
+// Função para exibir os dados do clima na tela
 function exibirClima(data) {
     let strongNomeCidade = document.getElementById("nomeCidade");
     strongNomeCidade.innerHTML = `${data.name}`;
@@ -50,8 +57,11 @@ function exibirClima(data) {
     let strongDataConsulta = document.getElementById("dataConsulta");
     let dataAtual = new Date();
     strongDataConsulta.innerHTML = `${dataAtual.toLocaleDateString()} ${dataAtual.toLocaleTimeString()}`;
+    let iconeClima = document.getElementById("icone");
+    iconeClima.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="${data.weather[0].description}">`;
 }
 
+// Função para salvar a consulta no histórico
 function salvarHistorico(data) {
     let consulta = {
         cidade: data.name,
@@ -60,18 +70,21 @@ function salvarHistorico(data) {
         dataConsulta: new Date()
     };
     historico.push(consulta);
+    salvarNoLocalStorage();
 }
 
+// Função para exibir o histórico de consultas na tela
 function exibirHistorico() {
     let listaHistorico = document.getElementById("historico");
     listaHistorico.innerHTML = "";
     historico.forEach(function(consulta) {
         let item = document.createElement("li");
-        item.textContent = `${consulta.cidade} - ${consulta.temperatura} °C - ${consulta.descricao} - ${consulta.dataConsulta.toLocaleString()}`;
+        item.innerHTML = `<p>${consulta.cidade} - ${consulta.temperatura} °C - ${consulta.descricao} - ${consulta.dataConsulta.toLocaleString()}</p> <button onclick="removerHistorico(${historico.indexOf(consulta)})">Remover</button>`;
         listaHistorico.appendChild(item);
     });
 }
 
+// Função para exibir as estatísticas das consultas
 function exibirEstatisticas() {
     let totalConsultas = historico.length;
     let somaTemperaturas = historico.reduce((soma, consulta) => soma + consulta.temperatura, 0);
@@ -84,4 +97,58 @@ function exibirEstatisticas() {
     strongTotalConsultas.innerHTML = `${totalConsultas}`;
     strongMediaTemperaturas.innerHTML = `${mediaTemperaturas} °C`;
     strongMaiorTemperatura.innerHTML = `${cidadeQuente}`;
+}
+
+// Função para salvar o histórico no armazenamento local
+function salvarNoLocalStorage() {
+    localStorage.setItem("historico", JSON.stringify(historico));
+}
+
+// Função para carregar o histórico do armazenamento local
+function carregarDoLocalStorage() {
+    let historicoSalvo = localStorage.getItem("historico");
+    if (historicoSalvo) {
+        historico = JSON.parse(historicoSalvo);
+        exibirHistorico();
+        exibirEstatisticas();
+        exibirGrafico();
+    }
+}
+
+// Função para remover uma consulta do histórico pelo índice
+function removerHistorico(index) {
+    historico.splice(index, 1);
+    salvarNoLocalStorage();
+    exibirHistorico();
+    exibirEstatisticas();
+    exibirGrafico();
+}
+
+// Função para exibir o gráfico das temperaturas das consultas
+function exibirGrafico() {
+    let canvas = document.getElementById("grafico");
+    let ctx = canvas.getContext("2d");
+
+    let labels = historico.map(function(consulta) {
+        return consulta.cidade;
+    });
+
+    let valores = historico.map(function(consulta) {
+        return consulta.temperatura;
+    });
+
+    if (grafico !== null) {
+        grafico.destroy();
+    }
+
+    grafico = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Temperatura (°C)",
+                data: valores
+            }]
+        }
+    });
 }

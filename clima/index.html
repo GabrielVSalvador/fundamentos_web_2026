@@ -6,6 +6,7 @@
     <title>Weather Dashboard</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
 
         <!-- Resultado -->
         <section class="card">
-            <h2>Clima Atual</h2>
+            <h2>Clima Atual <span id="icone"></span></h2>
 
             <div id="resultado" class="resultado">
 
@@ -106,6 +107,8 @@
                 <!-- JS adicionará itens aqui -->
             </ul>
         </section>
+
+        <canvas id="grafico"> </canvas>
 
     </main>
 
