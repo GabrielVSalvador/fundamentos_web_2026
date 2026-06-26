@@ -32,6 +32,12 @@ com funcionalidades de cadastro de eventos, estatísticas automáticas, edição
 * **Status:** Concluído ✅
 * **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/cadastroDeEventos/index.html)
 
+### 📂 GeoFinder
+Aplicação web que consome a REST Countries API para listar países com bandeira, 
+nome e capital. Permite busca em tempo real por nome e ordenação alfabética por 
+nome ou capital.
+* **Status:** Concluído ✅
+* **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/consultaPaises/index.html)
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
