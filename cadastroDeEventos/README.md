@@ -24,13 +24,15 @@ html, css e javascript
 Abrir o arquivo index.html no navegador.
 
 ## Conceitos de JavaScript praticados
-String - título/local
-Number - vagas/preço
-Boolean - ativo
-Date - data do evento
-Undefined - observação
-Null - cancelamento
-Object = evento
-Array - lista de eventos
-map/filter/reduce - manipulação
-DOM - exibição
+Boolean com checkbox — .checked
+Date — criação, formatação e cálculo entre datas
+undefined e null — diferença e uso prático
+.toLocaleDateString("pt-BR") — formatação de datas
+.toISOString().split("T")[0] — conversão de Date para string
+Fuso horário — problema do T00:00:00
+Arrow functions — evento => evento.ativo
+.includes() — busca em strings
+Dias restantes — cálculo com milissegundos
+Edição de registros — indiceEditando
+Blob e download de arquivos
+JSON.stringify(dados, null, 2) — formatação legível
