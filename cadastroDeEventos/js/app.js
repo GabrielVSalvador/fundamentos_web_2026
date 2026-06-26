@@ -82,9 +82,11 @@ function listarEventos() {
 
     // Itera sobre o array de eventos e adiciona cada evento à lista exibida na tela
     eventos.forEach(function(evento, index) {
+        let hoje = new Date();
+        let diasRestantes = Math.ceil((evento.data - hoje) / (1000 * 60 * 60 * 24));
         divLista.innerHTML += `
             <div class="item">
-                <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'}</span>
+                <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'} - ${(diasRestantes < 0) ? 'Evento expirado' : diasRestantes + ' dias restantes'}</span>
                 <button onclick="excluirEvento(${index})">Excluir</button>
                 <button onclick="cancelarEvento(${index})">Cancelar</button>
             </div>
@@ -168,9 +170,11 @@ botaoBuscar.addEventListener("click", function() {
         return;
     }
     eventosFiltrados.forEach(function(evento, index) {
+        let hoje = new Date();
+        let diasRestantes = Math.ceil((evento.data - hoje) / (1000 * 60 * 60 * 24));
         divLista.innerHTML += `
             <div class="item">
-                <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'}</span>
+                <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'} - ${(diasRestantes < 0) ? 'Evento expirado' : diasRestantes + ' dias restantes'}</span>
                 <button onclick="excluirEvento(${index})">Excluir</button>
                 <button onclick="cancelarEvento(${index})">Cancelar</button>
             </div>
