@@ -12,6 +12,7 @@ let campoAtivo = document.getElementById("ativo");
 let campoBusca = document.getElementById("busca");
 let botaoBuscar = document.getElementById("btnBuscar");
 let botaoOrdenar = document.getElementById("ordenar");
+let botaoExportar = document.getElementById("btnExportar");
 let indiceEditando = null;
 
 // Carrega os eventos do armazenamento local ao iniciar a página
@@ -221,6 +222,7 @@ botaoOrdenar.addEventListener("click", function() {
     listarEventos();
 });
 
+// Função que permite editar um evento existente, preenchendo os campos do formulário com os valores do evento selecionado e alterando o texto do botão de cadastro para "Salvar alterações"
 function editarEvento(index) {
     let evento = eventos[index];
     campoTitulo.value = evento.titulo;
@@ -232,3 +234,18 @@ function editarEvento(index) {
     indiceEditando = index;
     botaoCadastrar.textContent = "Salvar alterações";
 }
+
+// Adiciona um evento de clique ao botão "Exportar"
+botaoExportar.addEventListener("click", function() {
+    // Converte o array de eventos em uma string JSON formatada com indentação de 2 espaços
+    let json = JSON.stringify(eventos, null, 2);
+    // Cria um blob com o conteúdo JSON e define o tipo MIME como "application/json"
+    let blob = new Blob([json], { type: "application/json" });
+    // Cria uma URL temporária para o blob e cria um link de download para o arquivo JSON
+    let url = URL.createObjectURL(blob);
+    // Cria um elemento <a> para o link de download e define o atributo href como a URL do blob e o atributo download como o nome do arquivo
+    let link = document.createElement("a");
+    link.href = url;
+    link.download = "eventos.json";
+    link.click();
+});

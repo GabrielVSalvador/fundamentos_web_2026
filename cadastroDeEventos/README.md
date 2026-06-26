@@ -15,6 +15,7 @@ Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a gere
  ordenação por data
  dias restantes
  edição de eventos
+ exportação de eventos para JSON
 
 ## Tecnologias utilizadas
 html, css e javascript
