@@ -1,3 +1,14 @@
+// Verifica se a variável API_KEY está definida, caso contrário, solicita ao usuário que insira sua chave da OpenWeatherMap
+if (typeof API_KEY === "undefined") {
+    API_KEY = localStorage.getItem("apiKey");
+    if (!API_KEY) {
+        API_KEY = prompt("Digite sua chave da OpenWeatherMap para usar o app:");
+        if (API_KEY) {
+            localStorage.setItem("apiKey", API_KEY);
+        }
+    }
+}
+
 // Array que guarda o histórico de consultas
 let historico = [];
 

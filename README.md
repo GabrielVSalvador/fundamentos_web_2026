@@ -38,6 +38,12 @@ nome e capital. Permite busca em tempo real por nome e ordenação alfabética p
 nome ou capital.
 * **Status:** Concluído ✅
 * **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/consultaPaises/index.html)
+
+### 📂 Pintou um clima
+Aplicação web que consome a open weather API para consulta de clima em uma cidade, mostrando dados do clima no momento e listando historico de consultas.
+* **Status:** Concluído ✅
+* **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/clima/index.html)
+
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
