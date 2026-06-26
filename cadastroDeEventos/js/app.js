@@ -12,6 +12,7 @@ let campoAtivo = document.getElementById("ativo");
 let campoBusca = document.getElementById("busca");
 let botaoBuscar = document.getElementById("btnBuscar");
 let botaoOrdenar = document.getElementById("ordenar");
+let indiceEditando = null;
 
 // Carrega os eventos do armazenamento local ao iniciar a página
 carregarDoLocalStorage();
@@ -39,6 +40,31 @@ botaoCadastrar.addEventListener("click", function() {
     }
     if (campoData.value === "") {
         alert("Preencha a data!");
+        return;
+    }
+
+    if (indiceEditando !== null) {
+        // atualiza o evento existente com os novos valores dos campos
+        eventos[indiceEditando].titulo = campoTitulo.value;
+        eventos[indiceEditando].local = campoLocal.value;
+        eventos[indiceEditando].vagas = parseInt(campoVagas.value);
+        eventos[indiceEditando].preco = parseFloat(campoPreco.value);
+        eventos[indiceEditando].data = new Date(campoData.value+"T00:00:00");
+        eventos[indiceEditando].ativo = campoAtivo.checked;
+
+        // limpa os campos
+        campoTitulo.value = "";
+        campoLocal.value = "";
+        campoVagas.value = "";
+        campoPreco.value = "";
+        campoData.value = "";
+        campoAtivo.checked = false;
+        
+        salvarNoLocalStorage();
+        listarEventos();
+        calcularEstatisticas();
+        indiceEditando = null;
+        botaoCadastrar.textContent = "Cadastrar";
         return;
     }
 
@@ -89,6 +115,7 @@ function listarEventos() {
                 <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'} - ${(diasRestantes < 0) ? 'Evento expirado' : diasRestantes + ' dias restantes'}</span>
                 <button onclick="excluirEvento(${index})">Excluir</button>
                 <button onclick="cancelarEvento(${index})">Cancelar</button>
+                <button onclick="editarEvento(${index})">Editar</button>
             </div>
         `;
     });
@@ -177,6 +204,7 @@ botaoBuscar.addEventListener("click", function() {
                 <span>${evento.titulo} - ${evento.local} - ${evento.vagas} vagas - R$ ${evento.preco} - ${evento.data.toLocaleDateString("pt-BR")} - ${(evento.ativo) ? 'Ativo' : 'Inativo'} - ${(diasRestantes < 0) ? 'Evento expirado' : diasRestantes + ' dias restantes'}</span>
                 <button onclick="excluirEvento(${index})">Excluir</button>
                 <button onclick="cancelarEvento(${index})">Cancelar</button>
+                <button onclick="editarEvento(${index})">Editar</button>
             </div>
         `;
     });
@@ -192,3 +220,15 @@ botaoOrdenar.addEventListener("click", function() {
     // Atualiza a lista de eventos exibida na tela após ordenar
     listarEventos();
 });
+
+function editarEvento(index) {
+    let evento = eventos[index];
+    campoTitulo.value = evento.titulo;
+    campoLocal.value = evento.local;
+    campoVagas.value = evento.vagas;
+    campoPreco.value = evento.preco;
+    campoData.value = evento.data.toISOString().split("T")[0]; // Formata a data para o formato YYYY-MM-DD
+    campoAtivo.checked = evento.ativo;
+    indiceEditando = index;
+    botaoCadastrar.textContent = "Salvar alterações";
+}

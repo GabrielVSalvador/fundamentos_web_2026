@@ -14,6 +14,7 @@ Desenvolver uma aplicação simples em JavaScript para ajudar um usuário a gere
  busca de eventos por nome
  ordenação por data
  dias restantes
+ edição de eventos
 
 ## Tecnologias utilizadas
 html, css e javascript
