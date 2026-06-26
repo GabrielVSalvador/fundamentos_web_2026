@@ -44,6 +44,11 @@ Aplicação web que consome a open weather API para consulta de clima em uma cid
 * **Status:** Concluído ✅
 * **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/clima/index.html)
 
+### 📂 CEFETflix
+Aplicação web desenvolvida para a disciplina de Desenvolvimento Web, com o objetivo de consumir a OMDb API para pesquisa e análise de filmes, séries e jogos.
+* **Status:** Concluído ✅
+* **Link do Deploy:** [Visualize aqui](https://GabrielVSalvador.github.io/fundamentos_web_2026/cefetflix/index.html)
+
 ---
 
 ## 🛠️ Tecnologias e Ferramentas

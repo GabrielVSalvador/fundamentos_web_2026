@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEFETflix</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <h1>CEFETflix</h1>
+    
+    <div class="controles">
+        <input type="text" id="searchInput" placeholder="Digite o nome do filme...">
+        <button id="searchBtn">Buscar</button>
+
+        <select id="typeFilter">
+            <option value="">Todos os tipos</option>
+            <option value="movie">Filmes</option>
+            <option value="series">Séries</option>
+            <option value="game">Jogos</option>
+        </select>
+
+        <select id="sortSelect">
+            <option value="">Ordenar por...</option>
+            <option value="year">Ano (Mais recente)</option>
+            <option value="title">Título (A-Z)</option>
+        </select>
+    </div>
+
+    <div class="estatisticas" id="statsContainer" style="width: 960px; margin: 0 auto 20px auto; padding: 10px; background: #f4f4f4; border: 1px solid #ccc; display: none;">
+        </div>
+
+    <div class="catalogo" id="catalogo">
+        </div>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">X FECHAR</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+</body>
+</html>

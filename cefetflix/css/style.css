@@ -1,0 +1,67 @@
+/* Paleta Netflix: Fundo escuro, detalhes em vermelho */
+body {
+    background-color: #141414;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 { text-align: center; color: #E50914; }
+
+.controles {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Estilo dos Cards */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filme {
+    background: #2f2f2f;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.filme:hover { transform: scale(1.05); border: 2px solid #E50914; }
+.filme img { width: 100%; height: 300px; object-fit: cover; }
+.filme_nome { padding: 10px; }
+
+/* Modal */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center;
+}
+.modal-content {
+    background: #181818; padding: 20px; border-radius: 10px;
+    max-width: 600px; width: 90%; border-top: 5px solid #E50914;
+}
+.close-modal { cursor: pointer; color: #E50914; font-weight: bold; float: right; }
+
+#closeModal {
+    background: #E50914;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.estatisticas {
+    width: 960px;
+    margin: 0 auto 20px auto;
+    padding: 10px; 
+    background: #f4f4f4; 
+    border: 1px solid #ccc; 
+    display: none;
+    color: black;
+}
